@@ -10,6 +10,11 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import People from "./views/people";
+import { propTypes } from "react-bootstrap/esm/Image";
+import { Characters } from "./component/characters";
+import { CharacterDetail } from "./component/charactersDetails";
+import { PlanetDetail } from "./component/planetDetails";
+import { VehicleDetail } from "./component/vehiclesDetails";
 
 //create your first component
 const Layout = () => {
@@ -30,7 +35,16 @@ const Layout = () => {
 							<Demo />
 						</Route>
 						<Route exact path="/single/:theid">
-							<Single />
+							
+						</Route>
+						<Route exact path="/personaje/:index">
+							<CharacterDetail />
+						</Route>
+						<Route exact path="/planeta/:index">
+							<PlanetDetail />
+						</Route>
+						<Route exact path="/vehiculo/:index">
+							<VehicleDetail />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
