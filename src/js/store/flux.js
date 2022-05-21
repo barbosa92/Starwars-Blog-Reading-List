@@ -1,9 +1,15 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+
 			characters: [],
 			planets: [],
 			vehicles: [],
+			films:[],
+
+			favs_characters:[],
+			favs_planets:[],
+			favs_vehicles:[],
 			demo: [
 				{
 					title: "FIRST",
@@ -18,6 +24,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+			addFav: (nombre, index, tipo) => {
+				const store = getStore();
+				const favs_characters = store.favs_characters
+				if (tipo === "character") {
+					alert("Hola " + nombre)
+					console.log(store.characters[index])
+					const fav = (store.characters[index]);
+					// setStore({ favs_characters: fav });
+					setStore(favs_characters.push(fav));
+					console.log(favs_characters)
+					
+					// setStore(favs_characters.push(store.characters[index]))
+				}
+				else if (tipo === "planet") {
+					alert("Bonito planeta " + nombre)
+				}
+
+				else {
+					alert ("vehicle")
+				}
+			},
 			conseguirDatos: async () => {
 				var requestOptions = {
 					method: 'GET',
@@ -44,6 +71,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => {console.log(data.results)
 					setStore({vehicles: data.results})})
 					.catch(error => console.log('error', error));
+				
+				// Consigue los datos de los vehículos y los guarda en "vehicles"
+				await fetch("https://swapi.dev/api/films/", requestOptions)
+				.then(response => response.json())
+				.then(data => {console.log(data.results)
+				setStore({films: data.results})})
+				.catch(error => console.log('error', error));
 			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
