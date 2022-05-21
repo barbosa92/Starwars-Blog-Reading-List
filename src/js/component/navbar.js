@@ -25,7 +25,14 @@ export const Navbar = () => {
 								
 									return (<li className="mt-2" key={index}>
 										{element.name}
-									</li>)
+									<button
+									onClick={(() => {
+										actions.deleteFav(index, "character")
+									})}
+									>X</button>
+									</li>
+									
+									)
 								})}
 							</ul>
 
@@ -39,6 +46,11 @@ export const Navbar = () => {
 								
 									return (<li className="mt-2" key={index}>
 										{element.name}
+									<button
+									onClick={(() => {
+										actions.deleteFav(index, "planet")
+									})}
+									>X</button>
 									</li>)
 								})}
 							</ul>
@@ -53,6 +65,11 @@ export const Navbar = () => {
 								
 									return (<li className="mt-2" key={index}>
 										{element.name}
+									<button
+									onClick={(() => {
+										actions.deleteFav(index, "vehicle")
+									})}
+									>X</button>
 									</li>)
 								})}
 							</ul>

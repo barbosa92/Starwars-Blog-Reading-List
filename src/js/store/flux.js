@@ -24,6 +24,49 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+			deleteFav(index, tipo) {
+				console.log("Entra en deleteFav")
+				const store = getStore();
+
+				if (tipo === "character") {
+					console.log("Entra en character")
+					const fav = (store.favs_characters);
+					console.log(fav)
+
+					let filterFav = fav.filter((valor, position) => {
+						return position != index;
+					});
+
+					setStore(store.favs_characters = filterFav);
+					
+				}
+
+				else if (tipo === "planet") {
+					console.log("Entra en planet")
+					const fav = (store.favs_planets);
+					console.log(fav)
+
+					let filterFav = fav.filter((valor, position) => {
+						return position != index;
+					});
+
+					setStore(store.favs_planets = filterFav);
+				}
+
+				else if (tipo === "vehicle") {
+					console.log("Entra en vehicle")
+					const fav = (store.favs_vehicles);
+					console.log(fav)
+
+					let filterFav = fav.filter((valor, position) => {
+						return position != index;
+					});
+
+					setStore(store.favs_vehicles = filterFav);
+				}
+				
+			},
+
 			addFav: (nombre, index, tipo) => {
 				const store = getStore();
 				const favs_characters = store.favs_characters;
