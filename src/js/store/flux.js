@@ -26,23 +26,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			addFav: (nombre, index, tipo) => {
 				const store = getStore();
-				const favs_characters = store.favs_characters
+				const favs_characters = store.favs_characters;
+				const favs_planets = store.favs_planets;
+				const favs_vehicles = store.favs_vehicles;
 				if (tipo === "character") {
 					alert("Hola " + nombre)
-					console.log(store.characters[index])
 					const fav = (store.characters[index]);
-					// setStore({ favs_characters: fav });
 					setStore(favs_characters.push(fav));
-					console.log(favs_characters)
 					
-					// setStore(favs_characters.push(store.characters[index]))
 				}
 				else if (tipo === "planet") {
-					alert("Bonito planeta " + nombre)
+					alert("Bienvenido a " + nombre)
+					const fav = (store.planets[index]);
+					setStore(favs_planets.push(fav));
 				}
 
-				else {
-					alert ("vehicle")
+				else if (tipo === "vehicle") {
+					alert("Damos una vuelta en el " + nombre)
+					const fav = (store.vehicles[index]);
+					setStore(favs_vehicles.push(fav));
 				}
 			},
 			conseguirDatos: async () => {
