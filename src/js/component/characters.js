@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -7,8 +7,15 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 const heart = <FontAwesomeIcon icon={faHeart} />
 
 
+
+
 export const Characters= (props) =>{
 	const {store, actions} = useContext(Context)
+
+	
+	const [disable, setDisable] = React.useState(false);
+	const [style, setStyle] = React.useState("btn btn-danger")
+	
 	
 	return <div className="card" style={{width: "18rem"}}>
 		<div className="card-body">
@@ -17,8 +24,10 @@ export const Characters= (props) =>{
 			<Link to={"/personaje/"+props.i}>
 				<button>Learn more</button>
 			</Link>
-			<button className="btn-success"
+			<button id="favButton" className={style} disabled= {disable}
 				onClick={(() => {
+					setDisable(true)
+					setStyle("btn btn-light")
 					actions.addFav(props.name,props.i, "character")
 				})}
 			>
