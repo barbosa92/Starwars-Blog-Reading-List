@@ -7,7 +7,7 @@ export const Navbar = () => {
 	const {store, actions} = useContext(Context)
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-			<a className="navbar-brand" href="#">Navbar</a>
+			<a className="navbar-brand" href="/">Star Wars</a>
 				
 				<div className="mb-2">
 					<DropdownButton
@@ -24,7 +24,9 @@ export const Navbar = () => {
 								{store.favs_characters?.map((element, index) => {
 								
 									return (<li className="mt-2" key={index}>
-										{element.name}
+										<Link to={"/personaje/"+index}>
+											{element.name}
+										</Link>
 									<button
 									onClick={(() => {
 										actions.deleteFav(index, "character")
