@@ -13,10 +13,10 @@ export const Planets= (props) =>{
 	const [disable, setDisable] = React.useState(false);
 	const [style, setStyle] = React.useState("btn-danger")
 	
-	return <div className="card" style={{width: "18rem"}}>
+	return <div className="card" >
 		<div className="card-body">
 			<h5 className="card-title">{props.namePlanets}</h5>
-			<p className="card-text">{props.terrain}</p>
+			<p className="card-text">{props.population}</p>
 			<Link to={"/planeta/"+props.i}>
 				<button>
 				Learn more

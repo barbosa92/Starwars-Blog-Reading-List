@@ -33,7 +33,7 @@ export default function App() {
 					<div className="scrollable-div">
 					{
 					store.planets?.map((obj, i) => {
-						return <Planets namePlanets={obj.name} terrain={obj.terrain} i={i}/>
+						return <Planets namePlanets={obj.name} population={obj.population} i={i}/>
 					})
 					}
 					</div>

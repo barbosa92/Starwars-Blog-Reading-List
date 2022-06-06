@@ -15,7 +15,7 @@ export const Characters= (props) =>{
 	const [style, setStyle] = React.useState("btn-danger")
 	
 	
-	return <div className="card" style={{width: "18rem"}}>
+	return <div className="card" >
 		<div className="card-body">
 			<h5 className="card-title">{props.name}</h5>
 			<p className="card-text">{props.gender}</p>

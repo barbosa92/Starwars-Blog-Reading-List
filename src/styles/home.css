@@ -1,9 +1,18 @@
+.App {
+  padding: 2rem;
+}
 .scrollable-div {
-    background-color: #f1f1f1;
-    overflow-x: scroll;
-    white-space: nowrap;
-    margin: 20px;
-    text-align: justify;
-    padding: 20px;
-    display: flex;
+  background-color: #f1f1f1;
+  /* overflow-y: scroll; */
+  white-space: nowrap;
+  margin: 20px;
+  text-align: justify;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   }
+
+.card {
+  width: 200px;
+}

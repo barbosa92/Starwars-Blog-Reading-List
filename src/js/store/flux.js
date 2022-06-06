@@ -91,31 +91,48 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			conseguirDatos: async () => {
+				const store = getStore();
+
 				var requestOptions = {
 					method: 'GET',
 					redirect: 'follow'
 				  };
 
 				// Consigue los datos de los personajes y los guarda en "characters"
-				await fetch("https://swapi.dev/api/people/", requestOptions)
+				for (let i = 0; i < 9; i++) {
+					await fetch(`https://swapi.dev/api/people/?page=${i+1}` , requestOptions)
 					.then(response => response.json())
 					.then(data => {console.log(data.results)
-					setStore({characters: data.results})})
+					setStore([store.characters = store.characters.concat(data.results)])})
+					.then(console.log(`Vuelta${i+1}`))
+					.then(console.log(store.characters))
 					.catch(error => console.log('error', error));
-
+				}
+				
 				// Consigue los datos de los planetas y los guarda en "planets"
-				await fetch("https://swapi.dev/api/planets/", requestOptions)
+				for (let i = 0; i < 6; i++) {
+					await fetch(`https://swapi.dev/api/planets/?page=${i+1}` , requestOptions)
 					.then(response => response.json())
 					.then(data => {console.log(data.results)
-					setStore({planets: data.results})})
+					setStore([store.planets = store.planets.concat(data.results)])})
+					.then(console.log(`Vuelta${i+1}`))
+					.then(console.log(store.planets))
 					.catch(error => console.log('error', error));
+				}
 
 				// Consigue los datos de los vehículos y los guarda en "vehicles"
-				await fetch("https://swapi.dev/api/vehicles/", requestOptions)
+				for (let i = 0; i < 4; i++) {
+					await fetch(`https://swapi.dev/api/vehicles/?page=${i+1}` , requestOptions)
 					.then(response => response.json())
 					.then(data => {console.log(data.results)
-					setStore({vehicles: data.results})})
+					setStore([store.vehicles = store.vehicles.concat(data.results)])})
+					.then(console.log(`Vuelta${i+1}`))
+					.then(console.log(store.vehicles))
 					.catch(error => console.log('error', error));
+				}
+
+				
+				
 				
 				// Consigue los datos de los vehículos y los guarda en "vehicles"
 				await fetch("https://swapi.dev/api/films/", requestOptions)
