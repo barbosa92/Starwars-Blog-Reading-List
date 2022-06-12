@@ -33,7 +33,7 @@ export default function App() {
 					<div className="scrollable-div">
 					{
 					store.planets?.map((obj, i) => {
-						return <Planets namePlanets={obj.name} population={obj.population} i={i}/>
+						return <Planets name={obj.name} population={obj.population} i={i}/>
 					})
 					}
 					</div>
@@ -44,48 +44,12 @@ export default function App() {
 					<div className="scrollable-div">
 					{
 					store.vehicles?.map((obj, i) => {
-						return <Vehicles nameVehicles={obj.name} crew={obj.crew} i={i}/>
+						return <Vehicles name={obj.name} crew={obj.crew} i={i}/>
 					})
 					}
 					</div>
 				</div>
 
-				<div className="list">
-					<h2>Favoritos</h2>
-					<ul>
-						
-						{store.favs_characters?.map((element, index) => {
-							
-							return (<li className="mt-2" key={index}>
-								{element.name}
-							</li>)
-						})}
-						
-					</ul>
-
-					{/* <ul>
-						{lista?.map((object, index) => {
-							if (object.label == "sample task") {
-							} else {
-								return (
-									<li className="mt-2" key={index}>
-										{object.label}
-										<button
-											onClick={() => {
-												borrar(index);
-												console.log(lista);
-												console.log(setLista);
-											}}>
-											X
-										</button>
-									</li>
-								);
-							}
-						})}
-					</ul> */}
-					
-				</div>
-				
 			</div>
 }
 

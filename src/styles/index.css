@@ -1,3 +1,28 @@
-/* 
-    General Styles
-*/
+.like {
+    
+    color:red
+}
+
+.marco {
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    background-color: ghostwhite;
+    width: 30px;
+    height: 30px;
+    padding-left: 6px;
+    padding-top: 2px;
+    border-radius: 2px;
+    
+}
+
+.card-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.more {
+    border-radius: 2px;
+    border-width: 1px!important;
+    height: 30px;
+}

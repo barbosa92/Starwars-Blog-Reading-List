@@ -1,36 +1,35 @@
-import React, {useContext} from "react";
+import React, {useContext, useState, useEffect} from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
-const heart = <FontAwesomeIcon icon={faHeart} />
 
 export const Vehicles= (props) =>{
 
 	const {store, actions} = useContext(Context)
 
-	const [disable, setDisable] = React.useState(false);
-	const [style, setStyle] = React.useState("btn-danger")
+	const [disable,setDisable] = useState ("")
+	useEffect(()=>store.favs_vehicles.some((objeto) => objeto.name === props.name) ? setDisable("favorito") : setDisable(""),[])
 	
-	return <div className="card" >
+	return <div key={props.key} className="card" >
 		<div className="card-body">
-			<h5 className="card-title">{props.nameVehicles}</h5>
+			<h5 className="card-title">{props.name}</h5>
 			<p className="card-text">{props.crew}</p>
-			<Link to={"/vehiculo/"+props.i}>
-				<button>
-				Learn more
-				</button>
-			</Link>
-			<button id="favButton" className={style} disabled= {disable}
-				onClick={(() => {
-					setDisable(true)
-					setStyle("btn-light")
-					actions.addFav(props.name,props.i, "vehicle")
-				})}
-			>
-				{heart}
-			</button>	
+			<div className="card-buttons">
+				<Link to={"/vehiculo/"+props.i}>
+					<button className="more">Learn more</button>
+				</Link>
+				<div className="marco">
+					<i  className={disable == "" ?
+										"fa-regular fa-heart" :
+										"fa-solid fa-heart disable"}
+						onClick={() => {
+							disable == "" ? (setDisable("favorito"), actions.addFav(props.name,props.i, "vehicle")):(setDisable(""), actions.deleteFav(props.name, "vehicle"))
+							}}
+							>
+
+					</i>
+				</div>
+			</div>	
 		</div>
   </div>
 }

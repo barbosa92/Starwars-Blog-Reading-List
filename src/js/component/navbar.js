@@ -27,11 +27,6 @@ export const Navbar = () => {
 										<Link to={"/personaje/"+index}>
 											{element.name}
 										</Link>
-									<button
-									onClick={(() => {
-										actions.deleteFav(index, "character")
-									})}
-									>X</button>
 									</li>
 									
 									)
@@ -47,13 +42,11 @@ export const Navbar = () => {
 								{store.favs_planets?.map((element, index) => {
 								
 									return (<li className="mt-2" key={index}>
+									<Link to={"/planeta/"+index}>
 										{element.name}
-									<button
-									onClick={(() => {
-										actions.deleteFav(index, "planet")
-									})}
-									>X</button>
-									</li>)
+									</Link>
+									</li>
+									)
 								})}
 							</ul>
 
@@ -66,13 +59,11 @@ export const Navbar = () => {
 								{store.favs_vehicles?.map((element, index) => {
 								
 									return (<li className="mt-2" key={index}>
+									<Link to={"/vehiculo/"+index}>
 										{element.name}
-									<button
-									onClick={(() => {
-										actions.deleteFav(index, "vehicle")
-									})}
-									>X</button>
-									</li>)
+									</Link>
+									</li>
+									)
 								})}
 							</ul>
 

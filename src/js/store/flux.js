@@ -24,7 +24,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
-			deleteFav(index, tipo) {
+			deleteFav(nombre, tipo) {
 				console.log("Entra en deleteFav")
 				const store = getStore();
 
@@ -34,7 +34,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(fav)
 
 					let filterFav = fav.filter((valor, position) => {
-						return position != index;
+						console.log(nombre)
+						return valor.name != nombre;
 					});
 
 					setStore(store.favs_characters = filterFav);
@@ -47,7 +48,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(fav)
 
 					let filterFav = fav.filter((valor, position) => {
-						return position != index;
+						console.log(valor.name)
+						console.log(nombre)
+						return valor.name != nombre;
 					});
 
 					setStore(store.favs_planets = filterFav);
@@ -59,7 +62,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(fav)
 
 					let filterFav = fav.filter((valor, position) => {
-						return position != index;
+						console.log(valor.name)
+						console.log(nombre)
+						return valor.name != nombre;
 					});
 
 					setStore(store.favs_vehicles = filterFav);
